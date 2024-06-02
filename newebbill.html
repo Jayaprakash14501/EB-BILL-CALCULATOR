@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>ELECTRICITY BILL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+h1{
+color:black;
+animation-name:round;
+animation-duration:20s;
+}
+@keyframes round{
+from{color:black;}
+to{color:red;}
+}
+h1:hover
+{
+color:purple;
+}
+label:hover
+{
+text-decoration:underline;
+color:red;
+}
+.a:hover,.b:hover
+{
+background-color:#5CB9AF;
+color:white;
+border:3px solid brown;
+border-radius:10px;
+}
+.a
+{
+float:left;
+width:50%;
+background-color:#E6BFB6;
+height:275px;
+border:1px solid white;
+border-radius:10px;
+}
+.b
+{
+float:right;
+width:30%;
+background-color:#E6BFB6;
+height:275px;
+border:1px solid white;
+border-radius:10px;
+
+}
+.c
+{
+clear:both;
+width:75%;
+height:10px;
+padding:3%;
+}
+body
+{
+background-image:url("https://cdn.pixabay.com/photo/2021/08/11/16/36/power-poles-6538923_1280.jpg");
+width:100%;
+height:100%;
+}
+div
+{
+margin-right:auto;
+margin-left:auto;
+margin-top:30px;
+margin-bottom:auto;
+width:85%;
+height:auto;
+background-color:#F1EEEA;
+color:black;
+border-radius:10px;
+padding:10px;
+opacity:0.85;
+
+
+
+}
+table,tr,th,td
+{
+text-align:center;
+margin:10px;
+border:2px solid white;
+border-collapse:collapse;
+width:85%;
+height:40px;
+}
+th{
+width:35%;
+}
+
+</style>
+</head>
+<div>
+<center><h1>ELECTRICITY BILL CALCULATOR</h1></center><hr color=" 2px black">
+<div class="a"><label>NAME: </label><br><br>
+<input type="text" placeholder="enter your name" id="no2"/><br><br>
+<label>MOBILE NUMBER: </label><br><br>
+<input type="text" placeholder="enter your mobile number" id="no3"/><br><br>
+<label>UNITS: </label><br><br>
+<input type="text" placeholder="units" id="no1"/><br><br>
+
+<button onclick="range()" >household</button>
+<button onclick="com()" >commercial</button>
+</div>
+<div class="b">
+<table>
+<tr>
+<th>units</th>
+<td>
+<p id="mode"></p>
+</td>
+</tr>
+<tr>
+<th>amount</th>
+<td>
+<p id="blow"></p>
+</td>
+</tr>
+<tr>
+<th>service charge</th>
+<td>
+<p id="glow"></p>
+</td>
+</tr>
+<tr>
+<th>netbill</th>
+<td>
+<p id="show"></p>
+</td>
+</tr>
+</table>
+</div>
+<div class="c">
+<form method="post">
+<center> <input type="submit"/></center>
+</form>
+</div>
+</div>
+<script>
+function range()
+{
+var d=parseFloat(document.getElementById("no1").value);
+document.getElementById("mode").innerHTML=d;
+document.getElementById("no1").disabled=true;
+document.getElementById("no2").disabled=true;
+document.getElementById("no3").disabled=true;
+if(d<=50 && d>=1)
+{
+var mul=(d*0.5);
+var add=mul+(mul/5);
+document.getElementById("show").innerHTML=add+ "rupees";
+document.getElementById("glow").innerHTML=(mul/5)+ "rupees";
+document.getElementById("blow").innerHTML=mul+ "rupees";
+}
+else if(d>50 && d<=150)
+{
+var mul=(50*0.5)+((d-50)*0.75);
+var add=mul+(mul/5);
+document.getElementById("show").innerHTML=add+ "rupees";
+document.getElementById("blow").innerHTML=mul+ "rupees";
+document.getElementById("glow").innerHTML=(mul/5)+ "rupees";
+}
+else if(d>150 && d<=250)
+{
+var mul=(50*0.5)+(100*0.75)+((d-150)*1.20);
+var add=mul+(mul/5);
+document.getElementById("show").innerHTML=add+ "rupees";
+document.getElementById("blow").innerHTML=mul+ "rupees";
+document.getElementById("glow").innerHTML=(mul/5)+ "rupees";
+}
+else if(d>250 && d<=1000)
+{
+var mul=(50*0.5)+(100*0.75)+(100*1.20)+((d-250)*1.50);
+var add=mul+(mul/5);
+document.getElementById("show").innerHTML=add+ "rupees";
+document.getElementById("blow").innerHTML=mul+ "rupees";
+document.getElementById("glow").innerHTML=(mul/5)+ "rupees";
+}
+else
+{
+if(d==0)
+{
+alert("value is zero.please enter valid");
+}
+else if(d<0)
+{
+alert("value is negative.please enter valid");
+}
+else if(d>1000)
+{
+alert("value limit exceeds.please enter valid");
+}
+else if(document.getElementById("no1").value=="")
+{
+alert("enter the numbers");
+}
+else
+{
+alert(" enter the numbers only");
+}
+}
+}
+function com()
+{
+var d=parseFloat(document.getElementById("no1").value);
+document.getElementById("mode").innerHTML=d;
+document.getElementById("no1").disabled=true;
+document.getElementById("no2").disabled=true;
+document.getElementById("no3").disabled=true;
+if(d<=50 && d>=1)
+{
+var mul=(d*1);
+var add=mul+(mul/4);
+document.getElementById("show").innerHTML=add+ "rupees";
+document.getElementById("glow").innerHTML=(mul/4)+ "rupees";
+document.getElementById("blow").innerHTML=mul+ "rupees";
+}
+else if(d>50 && d<=150)
+{
+var mul=(50*1)+((d-50)*2);
+var add=mul+(mul/4);
+document.getElementById("show").innerHTML=add+ "rupees";
+document.getElementById("blow").innerHTML=mul+ "rupees";
+document.getElementById("glow").innerHTML=(mul/4)+ "rupees";
+}
+else if(d>150 && d<=250)
+{
+var mul=(50*1)+(100*2)+((d-150)*3);
+var add=mul+(mul/4);
+document.getElementById("show").innerHTML=add+ "rupees";
+document.getElementById("blow").innerHTML=mul+ "rupees";
+document.getElementById("glow").innerHTML=(mul/4)+ "rupees";
+}
+else if(d>250 && d<=1000)
+{
+var mul=(50*1)+(100*2)+(100*3)+((d-250)*4);
+var add=mul+(mul/4);
+document.getElementById("show").innerHTML=add+ "rupees";
+document.getElementById("blow").innerHTML=mul+ "rupees";
+document.getElementById("glow").innerHTML=(mul/4)+ "rupees";
+}
+else
+{
+if(d==0)
+{
+alert("value is zero.please enter valid");
+}
+else if(d<0)
+{
+alert("value is negative.please enter valid");
+}
+else if(d>1000)
+{
+alert("value limit exceeds.please enter valid");
+}
+else if(document.getElementById("no1").value=="")
+{
+alert("enter the numbers");
+}
+else
+{
+alert(" enter the numbers only");
+}
+}
+}
+</script>
+<body>
+</body>
+</html>
